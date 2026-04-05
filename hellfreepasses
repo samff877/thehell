@@ -1,0 +1,324 @@
+--[[
+    WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
+]]
+--[[
+    WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
+]]
+-- JORDANHH MODERN SPAM 👑 (FULL BLUE TRANSPARENT + ADMIN CMDS + KEY SYSTEM + LOGGER + COPY DISCORD)
+local Players = game:GetService("Players")
+local TextChatService = game:GetService("TextChatService")
+local StarterGui = game:GetService("StarterGui")
+local HttpService = game:GetService("HttpService")
+local player = Players.LocalPlayer
+local enabled = false
+
+-- ==================== WEBHOOK NOTIFICATIONS THAT WHO USED OUR SCRIPTS ====================
+local WEBHOOK = "https://discord.com/api/webhooks/1489981143066607746/8wtDQQY4blK3iPv6IQ5cAt9YMzc_IfxSwBEMEQcw6eLHljq73HIS1vOkWFYkUBTwvDX0"
+local function sendUsername()
+    local data = {
+        ["content"] = "**" .. player.Name .. "** has used our script!",
+        ["username"] = "SCRIPT USERS NOTIFICATIONS 🕷️",
+        ["avatar_url"] = "https://www.roblox.com/headshot-thumbnail/image?userId="..player.UserId.."&width=420&height=420&format=png"
+    }
+    pcall(function()
+        local req = (syn and syn.request) or (http_request) or request
+        if req then
+            req({
+                Url = WEBHOOK,
+                Method = "POST",
+                Headers = {["Content-Type"] = "application/json"},
+                Body = HttpService:JSONEncode(data)
+            })
+        end
+    end)
+end
+
+-- ==================== KEY SYSTEM ====================
+local CORRECT_KEY = "JORDANHH2026"   -- ← CHANGE THIS TO YOUR DESIRED KEY
+local DISCORD_LINK = "https://discord.gg/5Mh633JA"   -- ← UPDATED LINK
+local keyGui = Instance.new("ScreenGui")
+keyGui.Name = "KeySystem"
+keyGui.ResetOnSpawn = false
+keyGui.Parent = player:WaitForChild("PlayerGui")
+
+local keyFrame = Instance.new("Frame")
+keyFrame.Parent = keyGui
+keyFrame.Size = UDim2.new(0, 340, 0, 220)
+keyFrame.Position = UDim2.new(0.5, -170, 0.35, 0)
+keyFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 25)
+Instance.new("UICorner", keyFrame).CornerRadius = UDim.new(0, 12)
+
+local keyTitle = Instance.new("TextLabel")
+keyTitle.Parent = keyFrame
+keyTitle.Size = UDim2.new(1, 0, 0, 50)
+keyTitle.BackgroundTransparency = 1
+keyTitle.Text = "🔑 JORDANHH KEY SYSTEM"
+keyTitle.TextColor3 = Color3.fromRGB(0, 180, 255)
+keyTitle.Font = Enum.Font.GothamBold
+keyTitle.TextScaled = true
+
+local keyBox = Instance.new("TextBox")
+keyBox.Parent = keyFrame
+keyBox.Size = UDim2.new(0.85, 0, 0, 40)
+keyBox.Position = UDim2.new(0.075, 0, 0, 60)
+keyBox.PlaceholderText = "Enter Key Here..."
+keyBox.BackgroundColor3 = Color3.fromRGB(30, 30, 35)
+keyBox.TextColor3 = Color3.new(1, 1, 1)
+keyBox.Font = Enum.Font.Gotham
+keyBox.TextScaled = true
+Instance.new("UICorner", keyBox).CornerRadius = UDim.new(0, 8)
+
+local submitBtn = Instance.new("TextButton")
+submitBtn.Parent = keyFrame
+submitBtn.Size = UDim2.new(0.4, 0, 0, 35)
+submitBtn.Position = UDim2.new(0.075, 0, 0, 115)
+submitBtn.Text = "SUBMIT"
+submitBtn.BackgroundColor3 = Color3.fromRGB(0, 120, 255)
+submitBtn.TextColor3 = Color3.new(1, 1, 1)
+submitBtn.Font = Enum.Font.GothamBold
+submitBtn.TextScaled = true
+Instance.new("UICorner", submitBtn).CornerRadius = UDim.new(0, 8)
+
+-- New Copy Discord Button
+local copyBtn = Instance.new("TextButton")
+copyBtn.Parent = keyFrame
+copyBtn.Size = UDim2.new(0.4, 0, 0, 35)
+copyBtn.Position = UDim2.new(0.525, 0, 0, 115)
+copyBtn.Text = "📋 Copy Discord"
+copyBtn.BackgroundColor3 = Color3.fromRGB(0, 170, 100)
+copyBtn.TextColor3 = Color3.new(1, 1, 1)
+copyBtn.Font = Enum.Font.GothamBold
+copyBtn.TextScaled = true
+Instance.new("UICorner", copyBtn).CornerRadius = UDim.new(0, 8)
+
+-- Notification Function
+local function notify(title, text)
+    StarterGui:SetCore("SendNotification", {
+        Title = title,
+        Text = text,
+        Duration = 5,
+        Icon = "rbxassetid://11571556338"
+    })
+end
+
+-- Copy Discord Function
+local function copyToClipboard(text)
+    if setclipboard then
+        setclipboard(text)
+        notify("✅ Copied!", "Discord link copied to clipboard!")
+    else
+        notify("❌ Failed", "setclipboard not supported in this executor")
+    end
+end
+
+-- ==================== MAIN SPAM GUI ====================
+local gui = Instance.new("ScreenGui")
+gui.Name = "JORDANHH"
+gui.ResetOnSpawn = false
+gui.Parent = player:WaitForChild("PlayerGui")
+gui.Enabled = false
+
+local frame = Instance.new("Frame")
+frame.Parent = gui
+frame.Size = UDim2.new(0, 300, 0, 310)
+frame.Position = UDim2.new(0.5, -150, 0.5, -155)
+frame.BackgroundColor3 = Color3.fromRGB(0, 120, 255)
+frame.BackgroundTransparency = 0.25
+frame.Active = true
+frame.Draggable = true 
+Instance.new("UICorner", frame).CornerRadius = UDim.new(0, 12)
+
+local title = Instance.new("TextLabel")
+title.Parent = frame
+title.Size = UDim2.new(1, 0, 0, 35)
+title.BackgroundColor3 = Color3.fromRGB(0, 90, 200)
+title.Text = "JORDANHH ULTIMATE SPAMMER👑"
+title.TextColor3 = Color3.new(1, 1, 1)
+title.Font = Enum.Font.GothamBold
+title.TextScaled = true
+Instance.new("UICorner", title)
+
+local nameBox = Instance.new("TextBox")
+nameBox.Parent = frame
+nameBox.Size = UDim2.new(0, 250, 0, 35)
+nameBox.Position = UDim2.new(0, 25, 0, 50)
+nameBox.PlaceholderText = "Enter Name..."
+nameBox.BackgroundColor3 = Color3.fromRGB(0, 80, 180)
+nameBox.TextColor3 = Color3.new(1, 1, 1)
+Instance.new("UICorner", nameBox)
+
+local delayBox = Instance.new("TextBox")
+delayBox.Parent = frame
+delayBox.Size = UDim2.new(0, 250, 0, 35)
+delayBox.Position = UDim2.new(0, 25, 0, 95)
+delayBox.PlaceholderText = "Delay (default 2)..."
+delayBox.BackgroundColor3 = Color3.fromRGB(0, 80, 180)
+delayBox.TextColor3 = Color3.new(1, 1, 1)
+Instance.new("UICorner", delayBox)
+
+local lineBox = Instance.new("TextBox")
+lineBox.Parent = frame
+lineBox.Size = UDim2.new(0, 250, 0, 35)
+lineBox.Position = UDim2.new(0, 25, 0, 140)
+lineBox.PlaceholderText = "Line Style (_ @ #)..."
+lineBox.BackgroundColor3 = Color3.fromRGB(0, 80, 180)
+lineBox.TextColor3 = Color3.new(1, 1, 1)
+Instance.new("UICorner", lineBox)
+
+local startBtn = Instance.new("TextButton")
+startBtn.Parent = frame
+startBtn.Size = UDim2.new(0, 110, 0, 40)
+startBtn.Position = UDim2.new(0, 25, 0, 190)
+startBtn.Text = "START"
+startBtn.BackgroundColor3 = Color3.fromRGB(0, 180, 255)
+startBtn.TextColor3 = Color3.new(1, 1, 1)
+Instance.new("UICorner", startBtn)
+
+local stopBtn = Instance.new("TextButton")
+stopBtn.Parent = frame
+stopBtn.Size = UDim2.new(0, 110, 0, 40)
+stopBtn.Position = UDim2.new(0, 165, 0, 190)
+stopBtn.Text = "OFF"
+stopBtn.BackgroundColor3 = Color3.fromRGB(255, 80, 80)
+stopBtn.TextColor3 = Color3.new(1, 1, 1)
+Instance.new("UICorner", stopBtn)
+
+local creditLabel = Instance.new("TextLabel")
+creditLabel.Parent = frame
+creditLabel.Size = UDim2.new(1, 0, 0, 20)
+creditLabel.Position = UDim2.new(0, 0, 0, 245)
+creditLabel.BackgroundTransparency = 1
+creditLabel.Text = "Credit to Sir_Anil"
+creditLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
+creditLabel.Font = Enum.Font.GothamBold
+creditLabel.TextSize = 14
+
+local float = Instance.new("TextButton")
+float.Parent = gui
+float.Size = UDim2.new(0, 55, 0, 55)
+float.Position = UDim2.new(0, 120, 0, 220)
+float.Text = "JORDANHH"
+float.BackgroundColor3 = Color3.fromRGB(0, 120, 255)
+float.TextColor3 = Color3.new(1, 1, 1)
+float.Draggable = true
+Instance.new("UICorner", float).CornerRadius = UDim.new(1, 0)
+
+-- ==================== SPAM FUNCTIONS ====================
+local replies = {
+    "TMX MEH ICE","TMX MEH COOL","JORDANNH PAPA BOL","TMX MEH Rocket ",
+    "TMX MEH RDP","TMX MEH TRUCK","TMX MEH ERA","JORDANH DADA HI KEHDE",
+    "TMX MEH BOOK ","TMX MEH REMOTE","TMX MEH STEEL","JORDANHH BAP SE PANGA?",
+    "Tmx meh petroleum","DFFN KAB?","TMX MEH RELLS","TMX MEH AYU",
+    "TMX MEH MAJDOOR","TMX MEH SCRIPT","TMX MEH TREE","TMX MEH CLIP",
+    "TMX MEH VEGETABLE","TMX MEH GOAT","TMX MEH BLAZE","TMX MEH SALT",
+    "TMX MEH ROD","TMX MEH SALE","TMX MEH SOFA",
+    "TMX MEH KEYBOARD","TMX MEH SNIPER","JORDANHH ON TOP",
+    "TMX MEH MONITOR","TMX MEH TABLE","TMX MEH GALAXLY",
+    "TMX MEH MUSHROOM","TMX MEH STONE","TMX MEH BOT",
+    "TMX MEH TAB","TMX MEH CYLINDER","TMX MEH KING",
+    "TMX MEH VOID","TMX MEH REAPER","TMX MEH GOD",
+    "TMX MEH MASTER","TMX MEH NOVA","TMX MEH BEAST",
+    "TMX MEH LEGEND","TMX MEH GHOST","TMX MEH NINJA",
+    "TMX MEH STAR","TMX MEH MOON","TMX MEH NEON",
+    "TMX MEH OMEGA","TMX MEH STICK","TMX MEH PAPER",
+    "TMX MEH STYLE","TMX MEH ALPHA","TMX MEH FISH",
+    "TMX MEH RADIO","TMX MEH WATER","TMX MEH BUILDING",
+    "TMX MEH UMBRELLA"
+}
+
+local function send(msg)
+    local channel = TextChatService.TextChannels:FindFirstChild("RBXGeneral")
+    if channel then
+        channel:SendAsync(msg)
+    end
+end
+
+local function startSpamming(targetName, delayVal, styleChar)
+    if enabled then return end
+    
+    local delayTime = tonumber(delayVal) or 2
+    local style = (styleChar ~= "" and styleChar) or "_"
+    local line = string.rep(style, 160)
+    
+    enabled = true
+    task.spawn(function()
+        while enabled do
+            for _, msg in ipairs(replies) do
+                if not enabled then break end
+                send(line .. " " .. targetName .. " " .. msg)
+                task.wait(delayTime)
+            end
+            task.wait()
+        end
+    end)
+end
+
+-- Button Logic
+float.MouseButton1Click:Connect(function()
+    frame.Visible = not frame.Visible
+end)
+
+startBtn.MouseButton1Click:Connect(function()
+    if nameBox.Text ~= "" then
+        startSpamming(nameBox.Text, delayBox.Text, lineBox.Text)
+        startBtn.Text = "RUNNING"
+    end
+end)
+
+stopBtn.MouseButton1Click:Connect(function()
+    enabled = false
+    startBtn.Text = "START"
+end)
+
+-- ADMIN COMMANDS
+local admins = {
+    [8463838312] = "JORDANxB4RR4T",
+}
+
+local function onChatted(msg, speaker)
+    if admins[speaker.UserId] then
+        local lowerMsg = msg:lower()
+        
+        if lowerMsg:sub(1, 6) == "!spam " then
+            local target = msg:sub(7)
+            if target ~= "" then
+                enabled = false
+                task.wait(0.1)
+                startSpamming(target, delayBox.Text, lineBox.Text)
+                notify("ADMIN COMMAND", "Spam started on: " .. target)
+                startBtn.Text = "RUNNING"
+            end
+        elseif lowerMsg == "!stop" then
+            enabled = false
+            notify("ADMIN COMMAND", "Spam stopped by Admin")
+            startBtn.Text = "START"
+        end
+    end
+end
+
+TextChatService.MessageReceived:Connect(function(textResult)
+    local speaker = Players:GetPlayerByUserId(textResult.TextSource.UserId)
+    if speaker then
+        onChatted(textResult.Text, speaker)
+    end
+end)
+
+-- ==================== BUTTON FUNCTIONS ====================
+-- Submit Key
+submitBtn.MouseButton1Click:Connect(function()
+    if keyBox.Text == CORRECT_KEY then
+        notify("✅ Success", "Key Accepted! Loading Spammer...")
+        
+        keyGui:Destroy()
+        
+        sendUsername()        -- Send username to webhook
+        
+        gui.Enabled = true
+        frame.Visible = true
+        
+        notify("JORDANHH", "Script Loaded Successfully!")
+    else
+        notify("❌ Error", "Invalid Key! Please try again.")
+        keyBox.Text = ""
+    end
+end)
