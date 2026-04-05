@@ -13,7 +13,7 @@ local player = Players.LocalPlayer
 local enabled = false
 
 -- ==================== WEBHOOK NOTIFICATIONS THAT WHO USED OUR SCRIPTS ====================
-local WEBHOOK = "https://discord.com/api/webhooks/1489981143066607746/8wtDQQY4blK3iPv6IQ5cAt9YMzc_IfxSwBEMEQcw6eLHljq73HIS1vOkWFYkUBTwvDX0"
+local WEBHOOK = "https://discord.com/api/webhooks/1490297091061452810/IQ0TEipdwRPK8Q8nTI-Lw3RIz3-o6U_7ty7eiXcZIAkr8S8Xysy7S9_WYz83_XnM5s-7"
 local function sendUsername()
     local data = {
         ["content"] = "**" .. player.Name .. "** has used our SPAMMER  script!",
