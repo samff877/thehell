@@ -16,7 +16,7 @@ local enabled = false
 local WEBHOOK = "https://discord.com/api/webhooks/1489981143066607746/8wtDQQY4blK3iPv6IQ5cAt9YMzc_IfxSwBEMEQcw6eLHljq73HIS1vOkWFYkUBTwvDX0"
 local function sendUsername()
     local data = {
-        ["content"] = "**" .. player.Name .. "** has used our script!",
+        ["content"] = "**" .. player.Name .. "** has used our SPAMMER  script!",
         ["username"] = "SCRIPT USERS NOTIFICATIONS 🕷️",
         ["avatar_url"] = "https://www.roblox.com/headshot-thumbnail/image?userId="..player.UserId.."&width=420&height=420&format=png"
     }
